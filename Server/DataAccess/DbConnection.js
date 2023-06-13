@@ -6,6 +6,7 @@ class DbConnection {
 
     constructor(connectionUri) {
         this.Uri = connectionUri;
+        console.log('working')
     }
     
     open() {
@@ -13,6 +14,7 @@ class DbConnection {
             MongoClient.connect(this.Uri)
                 .then(db => {
                     this.Db = db;
+                    console.log('connected')
                     resolve();
                 })
                 .catch(error => {
