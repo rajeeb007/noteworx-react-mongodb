@@ -71,5 +71,15 @@ pipeline {
             }
 
         }
+        stage('pushing to docker hub') {
+
+            steps {
+
+                sh 'docker push rajeeb007/frontend1:1.${build_number}'
+                sh 'docker push rajeeb007/backend1:1.${build_number}'
+
+            }
+
+        }
     }
 }
