@@ -54,21 +54,17 @@ pipeline {
 
         stage('Docker Image Building') {
             steps {
-                dir('.') {
-                    sh 'docker build --no-cache -t rajeeb007/frontend1:1.${BUILD_NUMBER} .'
-                }
-                dir('Server') {
-                    sh 'docker build --no-cache -t rajeeb007/backend1:1.${BUILD_NUMBER} .'
-                }
-            }
+                    sh 'docker build -t rajeeb007/frontend1:1.${BUILD_NUMBER} .'
+                
+                
         }
 
-        stage('Push Images to Docker Hub') {
-            steps {
-                sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
-                sh 'docker push rajeeb007/frontend1:1.${BUILD_NUMBER}'
-                sh 'docker push rajeeb007/backend1:1.${BUILD_NUMBER}'
-            }
-        }
+        // stage('Push Images to Docker Hub') {
+        //     steps {
+        //         sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+        //         sh 'docker push rajeeb007/frontend1:1.${BUILD_NUMBER}'
+        //         sh 'docker push rajeeb007/backend1:1.${BUILD_NUMBER}'
+        //     }
+        // }
     }
 }
