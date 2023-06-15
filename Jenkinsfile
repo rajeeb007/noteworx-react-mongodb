@@ -55,7 +55,7 @@ pipeline {
         stage('Docker Image Building') {
             steps {
                     sh 'docker build --no-cache -t rajeeb007/frontend1:1.${BUILD_NUMBER} .'
-                    ah 'docker build --no-cache -t rajeeb007/backend1:1.${BUILD_NUMBER} ./Server/'
+                    sh 'docker build --no-cache -t rajeeb007/backend1:1.${BUILD_NUMBER} ./Server/'
                 
                 
             }
