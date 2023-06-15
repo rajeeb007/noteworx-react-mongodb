@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: backend
-          image: rajeeb007/backend1:latest
+          image: rajeeb007/backend1:${BUILD_NUMBER}
           ports:
             - containerPort: 8000
           env:
