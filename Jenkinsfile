@@ -4,6 +4,7 @@ pipeline {
     environment {
         DOCKERHUB_CREDENTIALS = credentials('docker_key')
         build_number = "${env.BUILD_ID}"
+        kubeconfig_path = "/hom/rajeeb/kubeconfig.yaml" 
     }
 
     stages {
@@ -42,14 +43,16 @@ pipeline {
             }
 
         }
-        
-        stage('Deploy') {
+        stage('Deploy to Kubernetes') {
             steps {
-                withKubeConfig([credentialsId: 'kubeconfig', kubeconfigFile: '/home/rajeeb/kubeconfig.yaml']) {
-                    sh 'kubectl apply -f ./kubernetes/deploy1.yaml'
-                }
+                sh "kubectl --kubeconfig=${kubeconfig_path} apply -f ./kubernetes/deploy.yaml"
+                sh "kubectl --kubeconfig=${kubeconfig_path} apply -f ./kubernetes/deploy.yaml"
+                sh "kubectl --kubeconfig=${kubeconfig_path} apply -f ./kubernetes/service1.yaml"
+                sh "kubectl --kubeconfig=${kubeconfig_path} apply -f ./kubernetes/service2.yaml"
             }
         }
+        
+        
     
     }
 }
