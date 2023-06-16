@@ -42,7 +42,7 @@ pipeline {
             }
 
         }
-        stages {
+        
         stage('Deploy') {
             steps {
                 withKubeConfig([credentialsId: 'kubeconfig', kubeconfigFile: '/home/rajeeb/kubeconfig.yaml']) {
@@ -50,6 +50,6 @@ pipeline {
                 }
             }
         }
-    }
+    
     }
 }
