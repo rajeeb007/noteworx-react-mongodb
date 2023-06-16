@@ -47,7 +47,6 @@ pipeline {
         }
         stage('Deploy to Kubernetes') {
             steps {
-                sh "chmod 600 /home/rajeeb/.kube/config"
                 sh "kubectl --kubeconfig=${kubeconfig_path} apply -f ./kubernetes/deploy.yaml"
                 sh "kubectl --kubeconfig=${kubeconfig_path} apply -f ./kubernetes/deploy.yaml"
                 sh "kubectl --kubeconfig=${kubeconfig_path} apply -f ./kubernetes/service1.yaml"
