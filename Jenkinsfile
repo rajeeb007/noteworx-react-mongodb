@@ -42,14 +42,14 @@ pipeline {
             }
 
         }
-        stage('deploying into minikube') {
+        stages {
+        stage('Deploy') {
             steps {
-                script {
-
-                    sh "kubectl apply -f ./kubernetes/deploy1.yaml"
+                withKubeConfig([credentialsId: 'kubeconfig', kubeconfigFile: '/home/rajeeb/kubeconfig.yaml']) {
+                    sh 'kubectl apply -f .kubernetes/deploy1.yaml'
                 }
-                
             }
         }
+    }
     }
 }
