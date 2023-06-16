@@ -46,7 +46,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 withKubeConfig([credentialsId: 'kubeconfig', kubeconfigFile: '/home/rajeeb/kubeconfig.yaml']) {
-                    sh 'kubectl apply -f .kubernetes/deploy1.yaml'
+                    sh 'kubectl apply -f ./kubernetes/deploy1.yaml'
                 }
             }
         }
