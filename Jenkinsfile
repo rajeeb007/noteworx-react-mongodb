@@ -4,7 +4,9 @@ pipeline {
     environment {
         DOCKERHUB_CREDENTIALS = credentials('docker_key')
         build_number = "${env.BUILD_ID}"
-        kubeconfig_path = "/hom/rajeeb/kubeconfig.yaml" 
+        // kubeconfig_path = "/hom/rajeeb/kubeconfig.yaml" 
+        kubeconfig_path = "/home/rajeeb/kubeconfig.yaml"
+
     }
 
     stages {
