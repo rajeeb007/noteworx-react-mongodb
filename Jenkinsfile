@@ -47,10 +47,10 @@ pipeline {
         }
         stage('Deploy to Kubernetes') {
             steps {
-                sh "sudo kubectl --kubeconfig=${kubeconfig_path} apply -f ./kubernetes/deploy.yaml"
-                sh "sudo kubectl --kubeconfig=${kubeconfig_path} apply -f ./kubernetes/deploy.yaml"
-                sh "sudo kubectl --kubeconfig=${kubeconfig_path} apply -f ./kubernetes/service1.yaml"
-                sh "sudo kubectl --kubeconfig=${kubeconfig_path} apply -f ./kubernetes/service2.yaml"
+                sh "kubectl --kubeconfig=${kubeconfig_path} apply -f ./kubernetes/deploy.yaml"
+                sh "kubectl --kubeconfig=${kubeconfig_path} apply -f ./kubernetes/deploy.yaml"
+                sh "kubectl --kubeconfig=${kubeconfig_path} apply -f ./kubernetes/service1.yaml"
+                sh "kubectl --kubeconfig=${kubeconfig_path} apply -f ./kubernetes/service2.yaml"
             }
         }
         
